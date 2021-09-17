@@ -13,11 +13,11 @@ composer require appoly/document-generator
 
 ```php
 
-	use  Appoly\DocumentGenerator\Facades\DocumentGenerator;
+use  Appoly\DocumentGenerator\Facades\DocumentGenerator;
 
-	$png  =  DocumentGenerator::url('https://www.appoly.co.uk')
-				->png()
-				->get();
+$png  =  DocumentGenerator::url('https://www.appoly.co.uk')
+		->png()
+		->get();
 
 ```
 
