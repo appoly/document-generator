@@ -83,7 +83,7 @@ class GenerateDocument
     }
 
     /**
-     * Set the width of the page
+     * Set the height of the page
      *
      * @param int $h
      * @return void
@@ -106,6 +106,12 @@ class GenerateDocument
         return $this;
     }
 
+    /**
+     * when rendering a PDF, Set to `true` to print background graphics
+     *
+     * @param Bool $i
+     * @return void
+     */
     public function showBackground(Bool $i)
     {
         $this->background = $i;
