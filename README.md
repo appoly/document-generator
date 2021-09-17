@@ -27,9 +27,10 @@ $png  =  DocumentGenerator::url('https://www.appoly.co.uk')
 | ----------------------------- | ---------------------------------------------------------------- |
 | `->pdf()`                     | sets the file to .pdf                                            |
 | `->png()`                     | sets the file to .png                                            |
-| `->url($w)`                   | sets the url that will be rendered                               |
-| `->html($w)`                  | sets the html that will be rendered                              |
+| `->url($url)`                   | sets the url that will be rendered                               |
+| `->html($html)`                  | sets the html that will be rendered                              |
 | `->height($h)`                | sets the files height                                            |
+| `->width($w)`                | sets the files width                                            |
 | `->showBackground($i = true)` | when rendering a PDF, Set to `true` to print background graphics |
 | `->filename($name)`           | sets the file name - defaults to `random.filetype`               |
 
