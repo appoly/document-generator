@@ -1,0 +1,27 @@
+{
+    "name": "appoly/document-generator",
+    "description": "A package to generate pdfs and pngs from urls or html sent to a lambda function",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Appoly\\DocumentGenerator\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Appoly\\DocumentGenerator\\DocumentGeneratorServiceProvider"
+            ]
+        },
+        "aliases": {
+            "DocumentGenerator": "Appoly\\DocumentGenerator\\Facades\\DocumentGenerator"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.3",
+        "illuminate/support": "^8.61"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
