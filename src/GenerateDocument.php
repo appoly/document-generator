@@ -166,9 +166,13 @@ class GenerateDocument
             $data['delay'] = $this->delay;
         }
 
+        if (isset($this->watermark)) {
+            $data['watermark'] = $this->watermark;
+        }
+
         return $data;
     }
-    
+
     /**
      * Get the base64 data.
      *
