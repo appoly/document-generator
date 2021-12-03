@@ -28,7 +28,7 @@ class GenerateDocument
     /**
      * Set the mode to pdf
      *
-     * @return void
+     * @return GenerateDocument
      */
     public function pdf()
     {
@@ -39,7 +39,7 @@ class GenerateDocument
     /**
      * Set the mode to png
      *
-     * @return void
+     * @return GenerateDocument
      */
     public function png()
     {
@@ -51,7 +51,7 @@ class GenerateDocument
      * Set the url that will be rendered
      *
      * @param string $url
-     * @return void
+     * @return GenerateDocument
      */
     public function url(String $url)
     {
@@ -63,7 +63,7 @@ class GenerateDocument
      * Set the html that will be rendered
      *
      * @param string $data
-     * @return void
+     * @return GenerateDocument
      */
     public function html($data)
     {
@@ -75,7 +75,7 @@ class GenerateDocument
      * Set the width of the page
      *
      * @param int $w
-     * @return void
+     * @return GenerateDocument
      */
     public function width(Int $w)
     {
@@ -87,7 +87,7 @@ class GenerateDocument
      * Set the height of the page
      *
      * @param int $h
-     * @return void
+     * @return GenerateDocument
      */
     public function height(Int $h)
     {
@@ -98,8 +98,8 @@ class GenerateDocument
     /**
      * Set the filename, do not include the extension
      *
-     * @param int $h
-     * @return void
+     * @param string $name
+     * @return GenerateDocument
      */
     public function filename(String $name)
     {
@@ -108,14 +108,27 @@ class GenerateDocument
     }
 
     /**
+     * Set the delay to wait for after page load
+     *
+     * @param int $delay
+     * @return GenerateDocument
+     */
+    public function delay(int $delay)
+    {
+        $this->delay = $delay;
+        return $this;
+    }
+
+    /**
      * when rendering a PDF, Set to `true` to print background graphics
      *
      * @param Bool $i
-     * @return void
+     * @return GenerateDocument
      */
     public function showBackground(Bool $i)
     {
         $this->background = $i;
+        return $this;
     }
 
     /**
@@ -149,9 +162,18 @@ class GenerateDocument
             $data['filename'] = $this->filename;
         }
 
+        if (isset($this->delay)) {
+            $data['delay'] = $this->delay;
+        }
+
         return $data;
     }
-
+    
+    /**
+     * Get the base64 data.
+     *
+     * @return string
+     */
     public function get()
     {
 
