@@ -15,6 +15,7 @@ class GenerateDocument
     private $background;
     private $filename;
     private $watermark;
+    private $waitForElement;
 
     public function __construct()
     {
@@ -132,14 +133,26 @@ class GenerateDocument
     }
 
     /**
-     * Set a watermark on the file, do not include the extension
+     * Set a watermark on the file
      *
-     * @param int $h
+     * @param String $imageUrl
      * @return void
      */
     public function watermark(String $imageUrl = 'https://www.appoly.co.uk/app/themes/appoly/dist/images/logo.png')
     {
         $this->watermark = $imageUrl;
+        return $this;
+    }
+
+    /**
+     * Set a watermark on the file
+     *
+     * @param String $element
+     * @return void
+     */
+    public function waitForElement(String $element)
+    {
+        $this->waitForElement = $element;
         return $this;
     }
 
@@ -168,6 +181,10 @@ class GenerateDocument
 
         if (isset($this->watermark)) {
             $data['watermark'] = $this->watermark;
+        }
+
+        if (isset($this->waitForElement)) {
+            $data['waitForElement'] = $this->waitForElement;
         }
 
         return $data;
