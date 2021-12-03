@@ -14,6 +14,7 @@ class GenerateDocument
     private $height;
     private $background;
     private $filename;
+    private $watermark;
 
     public function __construct()
     {
@@ -115,6 +116,18 @@ class GenerateDocument
     public function showBackground(Bool $i)
     {
         $this->background = $i;
+    }
+
+    /**
+     * Set a watermark on the file, do not include the extension
+     *
+     * @param int $h
+     * @return void
+     */
+    public function watermark(String $imageUrl = 'https://www.appoly.co.uk/app/themes/appoly/dist/images/logo.png')
+    {
+        $this->watermark = $imageUrl;
+        return $this;
     }
 
     private function buildData()
