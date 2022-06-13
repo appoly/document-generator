@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static Appoly\DocumentGenerator\GenerateDocument filename(String $name) Set the filename, do not include the extension
  * @method static Appoly\DocumentGenerator\GenerateDocument showBackground(Bool $i) When rendering a PDF, Set to `true` to print background graphics
  * @method static Appoly\DocumentGenerator\GenerateDocument delay(int $delay) When rendering a PDF, wait X seconds for browser
+ * @method static Appoly\DocumentGenerator\GenerateDocument header(string $header) Add header html
+ * @method static Appoly\DocumentGenerator\GenerateDocument footer(string $footer) Add footer html
  *
  */
 
