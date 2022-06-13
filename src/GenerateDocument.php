@@ -18,6 +18,7 @@ class GenerateDocument
     private $waitForElement;
     private $header;
     private $footer;
+    private $margin;
 
     public function __construct()
     {
@@ -147,6 +148,18 @@ class GenerateDocument
     }
 
     /**
+     * Set the page margin
+     *
+     * @param array $margin
+     * @return GenerateDocument
+     */
+    public function margin(array $margin)
+    {
+        $this->margin = $margin;
+        return $this;
+    }
+
+    /**
      * when rendering a PDF, Set to `true` to print background graphics
      *
      * @param Bool $i
@@ -219,6 +232,10 @@ class GenerateDocument
 
         if (isset($this->footer)) {
             $data['footerTemplate'] = $this->footer;
+        }
+
+        if (isset($this->margin)) {
+            $data['margin'] = $this->margin;
         }
 
         return $data;
