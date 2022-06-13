@@ -16,6 +16,8 @@ class GenerateDocument
     private $filename;
     private $watermark;
     private $waitForElement;
+    private $header;
+    private $footer;
 
     public function __construct()
     {
@@ -93,6 +95,30 @@ class GenerateDocument
     public function height(Int $h)
     {
         $this->height = $h;
+        return $this;
+    }
+
+    /**
+     * Set the header of the page
+     *
+     * @param string $h
+     * @return GenerateDocument
+     */
+    public function header(string $h)
+    {
+        $this->header = $h;
+        return $this;
+    }
+
+    /**
+     * Set the header of the page
+     *
+     * @param string $h
+     * @return GenerateDocument
+     */
+    public function footer(string $h)
+    {
+        $this->footer = $h;
         return $this;
     }
 
@@ -207,6 +233,9 @@ class GenerateDocument
         if (!isset($data['url']) && !isset($data['html'])) {
             throw new Exception('A URL or HTML data must be set.');
         }
+
+        //echo(json_encode($data)); die;
+        //$data['html'] = '';
 
         $response = Http::withHeaders([
             'x-api-key' => env('DOCUMENT_GENERATOR_API_KEY')
