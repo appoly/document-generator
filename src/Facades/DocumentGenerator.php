@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static Appoly\DocumentGenerator\GenerateDocument delay(int $delay) When rendering a PDF, wait X seconds for browser
  * @method static Appoly\DocumentGenerator\GenerateDocument header(string $header) Add header html
  * @method static Appoly\DocumentGenerator\GenerateDocument footer(string $footer) Add footer html
+ * @method static Appoly\DocumentGenerator\GenerateDocument margin(array $margins) Add margins
  *
  */
 
