@@ -213,6 +213,14 @@ class GenerateDocument
             $data['waitForElement'] = $this->waitForElement;
         }
 
+        if (isset($this->header)) {
+            $data['headerTemplate'] = $this->header;
+        }
+
+        if (isset($this->footer)) {
+            $data['footerTemplate'] = $this->footer;
+        }
+
         return $data;
     }
 
