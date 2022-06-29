@@ -19,7 +19,7 @@
     },
     "require": {
         "guzzlehttp/guzzle": "^7.3",
-        "illuminate/support": "^8.61"
+        "illuminate/support": "*"
     },
     "config": {
         "sort-packages": true
