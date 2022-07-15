@@ -1,4 +1,5 @@
 <?php
+
 namespace Appoly\DocumentGenerator;
 
 use Exception;
@@ -6,7 +7,6 @@ use Illuminate\Support\Facades\Http;
 
 class GenerateDocument
 {
-
     private $mode;
     private $url;
     private $html;
@@ -19,6 +19,7 @@ class GenerateDocument
     private $header;
     private $footer;
     private $margin;
+    private $pdfRenderOptions;
 
     public function __construct()
     {
@@ -195,6 +196,21 @@ class GenerateDocument
         return $this;
     }
 
+    /**
+     * Set the options for the pdf
+     * This will override any other options set ie ->margin
+     * see https://github.com/puppeteer/puppeteer/blob/v14.3.0/docs/api.md#pagepdfoptions for possible options
+     *
+     * @param array $options
+     * @return GenerateDocument
+     */
+
+    public function pdfRenderOptions(array $pdfRenderOptions)
+    {
+        $this->pdfRenderOptions = $pdfRenderOptions;
+        return $this;
+    }
+
     private function buildData()
     {
         $data = [
@@ -238,7 +254,10 @@ class GenerateDocument
             $data['margin'] = $this->margin;
         }
 
-        return $data;
+        if (isset($this->pdfRenderOptions)) {
+            $data['pdfRenderOptions'] = $this->pdfRenderOptions;
+            return $data;
+        }
     }
 
     /**
@@ -266,10 +285,10 @@ class GenerateDocument
             'x-api-key' => env('DOCUMENT_GENERATOR_API_KEY')
         ])
             ->withBody(
-                json_encode($data), 'application/json'
+                json_encode($data),
+                'application/json'
             )->post('https://j6un9iydxk.execute-api.eu-west-2.amazonaws.com/default/pdf-generation');
 
         return $response->body();
     }
-
 }
